@@ -80,7 +80,7 @@ public class DSConstraint {
         return updatedConstraintIfNeeded(constraint: constraint, offSet: offSet)
     }
     
-    public private func updatedConstraintIfNeeded(constraint: NSLayoutConstraint, offSet: CGFloat) -> NSLayoutConstraint {
+    private func updatedConstraintIfNeeded(constraint: NSLayoutConstraint, offSet: CGFloat) -> NSLayoutConstraint {
             if updatingMode, let similarConstraint = getSimilarConstraint(to: constraint) {
                 similarConstraint.constant = offSet
                 return similarConstraint
@@ -89,7 +89,7 @@ public class DSConstraint {
             return constraint
         }
     
-    public private func getSimilarConstraint(to constraint: NSLayoutConstraint) -> NSLayoutConstraint? {
+    private func getSimilarConstraint(to constraint: NSLayoutConstraint) -> NSLayoutConstraint? {
         if let similarConstraint = view.constraints.first(where: {$0.isSimilar(to: constraint)}){
             return similarConstraint
         }
