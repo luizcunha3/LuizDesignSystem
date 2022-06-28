@@ -1,22 +1,22 @@
 import UIKit
 
-class DSView: UIView {
+open class DSView: UIView {
     
-    func addViews() {
+    public func addViews() {
         fatalError("addViews() has not been implemented")
     }
     
-    func setupConstraints() {
+    public func setupConstraints() {
         fatalError("setupConstraints() has not been implemented")
     }
     
-    init() {
+    public init() {
         super.init(frame: CGRect.zero)
         addViews()
         setupConstraints()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
