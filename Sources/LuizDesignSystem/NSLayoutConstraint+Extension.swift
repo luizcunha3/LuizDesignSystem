@@ -51,9 +51,9 @@ public extension NSLayoutConstraint {
     }
     
     static func bottom(firstView: UIView,
-                 secondView: UIView,
-                 relation: NSLayoutConstraintType = .equal,
-                 constant: CGFloat = 0) -> NSLayoutConstraint {
+                       secondView: UIView,
+                       relation: NSLayoutConstraintType = .equal,
+                       constant: CGFloat = 0) -> NSLayoutConstraint {
         return NSLayoutConstraint(item: firstView,
                                   attribute: NSLayoutConstraint.Attribute.bottom,
                                   relatedBy: relation.get(),
@@ -102,10 +102,22 @@ public extension NSLayoutConstraint {
                                   constant: -1 * CGFloat(constant))
     }
     
+    static func height(view: UIView,
+                       relation: NSLayoutConstraintType = .equal,
+                       constant: CGFloat) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: view,
+                                  attribute: NSLayoutConstraint.Attribute.height,
+                                  relatedBy: relation.get(),
+                                  toItem: nil,
+                                  attribute: NSLayoutConstraint.Attribute.notAnAttribute,
+                                  multiplier: 1,
+                                  constant: CGFloat(constant))
+    }
+    
     static func height(firstView: UIView,
-                 secondView: UIView,
-                 relation: NSLayoutConstraintType = .equal,
-                 constant: CGFloat = 0) -> NSLayoutConstraint {
+                       secondView: UIView,
+                       relation: NSLayoutConstraintType = .equal,
+                       constant: CGFloat = 0) -> NSLayoutConstraint {
         return NSLayoutConstraint(item: firstView,
                                   attribute: NSLayoutConstraint.Attribute.height,
                                   relatedBy: relation.get(),
@@ -116,8 +128,8 @@ public extension NSLayoutConstraint {
     }
     
     static func height(firstView: UIView,
-                 relation: NSLayoutConstraintType = .equal,
-                 constant: CGFloat = 0) -> NSLayoutConstraint {
+                       relation: NSLayoutConstraintType = .equal,
+                       constant: CGFloat = 0) -> NSLayoutConstraint {
         return NSLayoutConstraint(item: firstView,
                                   attribute: NSLayoutConstraint.Attribute.height,
                                   relatedBy: relation.get(),
@@ -128,9 +140,9 @@ public extension NSLayoutConstraint {
     }
     
     static func width(firstView: UIView,
-                 secondView: UIView,
-                 relation: NSLayoutConstraintType = .equal,
-                 constant: CGFloat = 0) -> NSLayoutConstraint {
+                      secondView: UIView,
+                      relation: NSLayoutConstraintType = .equal,
+                      constant: CGFloat = 0) -> NSLayoutConstraint {
         return NSLayoutConstraint(item: firstView,
                                   attribute: NSLayoutConstraint.Attribute.width,
                                   relatedBy: relation.get(),
@@ -141,8 +153,8 @@ public extension NSLayoutConstraint {
     }
     
     static func width(firstView: UIView,
-                 relation: NSLayoutConstraintType = .equal,
-                 constant: CGFloat = 0) -> NSLayoutConstraint {
+                      relation: NSLayoutConstraintType = .equal,
+                      constant: CGFloat = 0) -> NSLayoutConstraint {
         return NSLayoutConstraint(item: firstView,
                                   attribute: NSLayoutConstraint.Attribute.width,
                                   relatedBy: relation.get(),
