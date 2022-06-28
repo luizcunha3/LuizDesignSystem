@@ -1,6 +1,6 @@
 import UIKit
 
-class DSView: UIView {
+open class DSView: UIView {
     
     func addViews() {
         fatalError("addViews() has not been implemented")

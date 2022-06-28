@@ -1,6 +1,7 @@
 import UIKit
 
 public extension NSLayoutConstraint {
+    
     static func inset(view: UIView, inSuperview superView: UIView, withInset inset: UIEdgeInsets? = nil) -> [NSLayoutConstraint] {
         return [
             .top(firstView: superView, secondView: view, relation: .equal, constant: -(inset?.top ?? 0)),
@@ -9,6 +10,7 @@ public extension NSLayoutConstraint {
             .bottom(firstView: superView, secondView: view, relation: .equal, constant: (inset?.bottom ?? 0))
         ]
     }
+    
     static func top(firstView: UIView,
                     secondView: UIView,
                     relation: NSLayoutConstraintType = .equal,
@@ -61,6 +63,19 @@ public extension NSLayoutConstraint {
                                   constant: CGFloat(constant))
     }
     
+    static func baseLine(firstView: UIView,
+                         secondView: UIView,
+                         relation: NSLayoutConstraintType = .equal,
+                         constant: CGFloat = 0) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: firstView,
+                                  attribute: NSLayoutConstraint.Attribute.firstBaseline,
+                                  relatedBy: relation.get(),
+                                  toItem: secondView,
+                                  attribute: NSLayoutConstraint.Attribute.firstBaseline,
+                                  multiplier: 1,
+                                  constant: CGFloat(constant))
+    }
+    
     static func over(topItem: UIView,
                      bottomItem: UIView,
                      relation: NSLayoutConstraintType = .equal,
@@ -70,6 +85,19 @@ public extension NSLayoutConstraint {
                                   relatedBy: relation.get(),
                                   toItem: bottomItem,
                                   attribute: NSLayoutConstraint.Attribute.top,
+                                  multiplier: 1,
+                                  constant: -1 * CGFloat(constant))
+    }
+    
+    static func aside(left: UIView,
+                      right: UIView,
+                      relation: NSLayoutConstraintType = .equal,
+                      constant: CGFloat = 0) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: left,
+                                  attribute: NSLayoutConstraint.Attribute.right,
+                                  relatedBy: relation.get(),
+                                  toItem: right,
+                                  attribute: NSLayoutConstraint.Attribute.right,
                                   multiplier: 1,
                                   constant: -1 * CGFloat(constant))
     }
