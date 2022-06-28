@@ -2,11 +2,11 @@ import UIKit
 
 open class DSView: UIView {
     
-    public func addViews() {
+    open func addViews() {
         fatalError("addViews() has not been implemented")
     }
     
-    public func setupConstraints() {
+    open func setupConstraints() {
         fatalError("setupConstraints() has not been implemented")
     }
     
