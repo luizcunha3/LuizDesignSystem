@@ -187,6 +187,18 @@ public class DSConstraint {
         return anchor(\.heightAnchor, to: dimension, priority: priority, multiplier: multiplier, size)
     }
     
+    @discardableResult
+        public func height(relation: NSLayoutConstraintType = .equal,
+                           priority: UILayoutPriority = .required,
+                           _ size: CGFloat) -> NSLayoutConstraint {
+
+            let constraint = NSLayoutConstraint.height(view: self.view,
+                                                       relation: relation,
+                                                       constant: size)
+            constraint.priority = priority
+            return updatedConstraintIfNeeded(constraint: constraint, offSet: CGFloat(size))
+        }
+    
     private func updatedConstraintIfNeeded(constraint: NSLayoutConstraint, offSet: CGFloat) -> NSLayoutConstraint {
         if updatingMode, let similarConstraint = getSimilarConstraint(to: constraint) {
             similarConstraint.constant = offSet
