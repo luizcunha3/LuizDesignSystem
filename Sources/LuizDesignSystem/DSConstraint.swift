@@ -68,6 +68,72 @@ public class DSConstraint {
     }
     
     @discardableResult
+    public func left(of view: UIView,
+                     relation: NSLayoutConstraintType = .equal,
+                     offSet: CGFloat = 0) -> NSLayoutConstraint {
+        let constraint = NSLayoutConstraint.aside(left: self.view,
+                                                  right: view,
+                                                  relation: relation,
+                                                  constant: offSet)
+        return updatedConstraintIfNeeded(constraint: constraint, offSet: CGFloat(offSet))
+    }
+    
+    @discardableResult
+    public func left(alignedWith: UILayoutGuide,
+                     relation: NSLayoutConstraintType = .equal,
+                     offSet: CGFloat = 0) -> NSLayoutConstraint {
+        
+        let constraint = self.view.leftAnchor.constraint(equalTo: alignedWith.leftAnchor,
+                                                         constant: offSet)
+        return updatedConstraintIfNeeded(constraint: constraint, offSet: offSet)
+    }
+    
+    @discardableResult
+    public func leftSafeArea(alignedWith: UIView,
+                             relation: NSLayoutConstraintType = .equal,
+                             offSet: CGFloat = 0) -> NSLayoutConstraint {
+        let constraint = self.view.leftAnchor.constraint(equalTo: alignedWith.safeAreaLayoutGuide.leftAnchor, constant: offSet)
+        return updatedConstraintIfNeeded(constraint: constraint, offSet: offSet)
+    }
+    
+    @discardableResult
+    public func right(alignedWith: UIView,
+                      relation: NSLayoutConstraintType = .equal,
+                      offSet: CGFloat = 0,
+                      priority: UILayoutPriority = .required) -> NSLayoutConstraint {
+        let constraint = NSLayoutConstraint.right(firstView: self.view,
+                                                   secondView: alignedWith,
+                                                   relation: relation,
+                                                   constant: -offSet)
+        constraint.priority = priority
+        return updatedConstraintIfNeeded(constraint: constraint, offSet: -CGFloat(offSet))
+    }
+    
+    @discardableResult
+    public func right(of view: UIView,
+                      relation: NSLayoutConstraintType = .equal,
+                      offSet: CGFloat = 0) -> NSLayoutConstraint {
+        let constraint = NSLayoutConstraint.aside(left: view, right: self.view, relation: relation, constant: offSet)
+        return updatedConstraintIfNeeded(constraint: constraint, offSet: CGFloat(offSet))
+    }
+    
+    @discardableResult
+    public func right(alignedWith: UILayoutGuide,
+                      relation: NSLayoutConstraintType = .equal,
+                      offSet: CGFloat = 0) -> NSLayoutConstraint {
+        let constraint = self.view.rightAnchor.constraint(equalTo: alignedWith.rightAnchor, constant: offSet)
+        return updatedConstraintIfNeeded(constraint: constraint, offSet: offSet)
+    }
+    
+    @discardableResult
+    public func rightSafeArea(alignedWith: UIView,
+                              relation: NSLayoutConstraintType = .equal,
+                              offSet: CGFloat = 0) -> NSLayoutConstraint {
+        let constraint = self.view.rightAnchor.constraint(equalTo: alignedWith.safeAreaLayoutGuide.rightAnchor, constant: -offSet)
+        return updatedConstraintIfNeeded(constraint: constraint, offSet: -offSet)
+    }
+    
+    @discardableResult
     public func under(view: UIView,
                relation: NSLayoutConstraintType = .equal,
                offSet: CGFloat = 0,
@@ -78,6 +144,39 @@ public class DSConstraint {
                                                  constant: offSet)
         constraint.priority = priority
         return updatedConstraintIfNeeded(constraint: constraint, offSet: offSet)
+    }
+    
+    
+    
+    @discardableResult
+    public func bottom(alignedWith: UIView,
+                       relation: NSLayoutConstraintType = .equal,
+                       offSet: CGFloat = 0,
+                       priority: UILayoutPriority = .required) -> NSLayoutConstraint {
+        let constraint = NSLayoutConstraint.bottom(firstView: self.view,
+                                                   secondView: alignedWith,
+                                                   relation: relation,
+                                                   constant: -offSet)
+        constraint.priority = priority
+        return updatedConstraintIfNeeded(constraint: constraint, offSet: -CGFloat(offSet))
+    }
+    
+    @discardableResult
+    public func bottomSafeArea(alignedWith: UIView,
+                               relation: NSLayoutConstraintType = .equal,
+                               offSet: CGFloat = 0,
+                               priority: UILayoutPriority = .required) -> NSLayoutConstraint {
+        let constraint = self.view.bottomAnchor.constraint(equalTo: alignedWith.safeAreaLayoutGuide.bottomAnchor, constant: -offSet)
+        return updatedConstraintIfNeeded(constraint: constraint, offSet: -offSet)
+    }
+    
+    @discardableResult
+    public func above(view: UIView,
+                      relation: NSLayoutConstraintType = .equal,
+                      offSet: CGFloat = 0,
+                      priority: UILayoutPriority = .required) -> NSLayoutConstraint {
+        let constraint = NSLayoutConstraint.over(topItem: self.view, bottomItem: view, relation: relation, constant: offSet)
+        return updatedConstraintIfNeeded(constraint: constraint, offSet: CGFloat(offSet))
     }
     
     private func updatedConstraintIfNeeded(constraint: NSLayoutConstraint, offSet: CGFloat) -> NSLayoutConstraint {
