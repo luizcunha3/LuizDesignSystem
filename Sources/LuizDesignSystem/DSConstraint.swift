@@ -180,6 +180,18 @@ public class DSConstraint {
     }
     
     @discardableResult
+    public func width(relation: NSLayoutConstraintType = .equal,
+                       priority: UILayoutPriority = .required,
+                       _ size: CGFloat) -> NSLayoutConstraint {
+        
+        let constraint = NSLayoutConstraint.width(view: self.view,
+                                                   relation: relation,
+                                                   constant: size)
+        constraint.priority = priority
+        return updatedConstraintIfNeeded(constraint: constraint, offSet: CGFloat(size))
+    }
+    
+    @discardableResult
     public func height(relation: NSLayoutConstraintType = .equal,
                        priority: UILayoutPriority = .required,
                        _ size: CGFloat) -> NSLayoutConstraint {

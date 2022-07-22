@@ -152,10 +152,10 @@ public extension NSLayoutConstraint {
                                   constant: CGFloat(constant))
     }
     
-    static func width(firstView: UIView,
+    static func width(view: UIView,
                       relation: NSLayoutConstraintType = .equal,
                       constant: CGFloat = 0) -> NSLayoutConstraint {
-        return NSLayoutConstraint(item: firstView,
+        return NSLayoutConstraint(item: view,
                                   attribute: NSLayoutConstraint.Attribute.width,
                                   relatedBy: relation.get(),
                                   toItem: nil,
